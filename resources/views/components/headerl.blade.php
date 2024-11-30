@@ -33,7 +33,7 @@
                     class="block px-4 py-2 text-base text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
                 <a href="#"
                     class="block px-4 py-2 text-base text-gray-700 hover:bg-indigo-600 hover:text-white">Settings</a>
-                <a href="actionlogout"
+                <a href="/actionlogout"
                     class="block px-4 py-2 text-base text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
             </div>
         </div>

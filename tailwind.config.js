@@ -16,7 +16,7 @@ export default {
         './resources/**/*.jpg',
         './resources/**/*.jpeg',
         './resources/**/*.css',
-
+        'node_modules/preline/dist/*.js',
     ],
     theme: {
         extend: {
@@ -29,5 +29,6 @@ export default {
     variants: {}, // Tetap kosong jika tidak diperlukan
     plugins: [
         require('@tailwindcss/forms'), // Tambahkan plugin yang relevan (custom-forms sudah deprecated)
+        require('preline/plugin'),
     ],
 };

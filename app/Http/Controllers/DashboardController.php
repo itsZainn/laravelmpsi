@@ -11,7 +11,13 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $title = $request->session()->get('title', 'Default Title'); // Default jika tidak ada title
-        return view('dashboard', compact('title'));
+        $data = 'fish';
+        $fish = Fish::all()->toArray();
+        $fishTypes = FishType::all()->toArray();
+        $records = $fish;
+
+
+        return view('dashboard', compact('title', 'data', 'records'));
     }
 
     public function show($data)

@@ -3,22 +3,22 @@
 @section('body')
     @php
         // dd($records);
-        if (!session()->has('init')) {
-            // Inisialisasi nilai $type dan $fishType
-            $c = $c ?? [];
-            // $fish = [];
-            $fishType = [];
+        // if (!session()->has('init')) {
+        //     // Inisialisasi nilai $type dan $fishType
+        //     $c = $c ?? [];
+        //     // $fish = [];
+        //     $fishType = [];
 
-            // Simpan data ke session
-            session([
-                'init' => true,
-                'data' => $c,
-            ]);
-            // dd('Session disimpan:', $c, $fish, $fishType);
-        } else {
-            $c = session('data');
-            // dd('Session diambil:', $c);
-        }
+        //     // Simpan data ke session
+        //     session([
+        //         'init' => true,
+        //         'data' => $c,
+        //     ]);
+        //     // dd('Session disimpan:', $c, $fish, $fishType);
+        // } else {
+        //     $c = session('data');
+        //     // dd('Session diambil:', $c);
+        // }
         // dd($c);
         // $data = $data ?? 'undefined';
         $records = $records ?? [];
@@ -103,47 +103,41 @@
                         @if ($data === 'fish')
                             <tr>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     No</th>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     Id</th>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     Nama Ikan</th>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     Harga Ikan</th>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     Keterangan</th>
-                                <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
-                                </th>
-                                <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
-                                </th>
+                                <th colspan="2"
+                                    class="px-6 py-3 border min-w-56 border-gray-200 bg-gray-50 text-center text-xl font-extrabold text-gray-500 tracking-wider uppercase">
+                                    Aksi</th>
                             </tr>
                         @elseif ($data === 'fishType')
                             <tr>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     No</th>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     Id</th>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     Nama</th>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-left text-xl font-extrabold text-gray-500 tracking-wider uppercase">
                                     Category</th>
-                                <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
-                                </th>
-                                <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-lg font-medium text-gray-500 tracking-wider uppercase">
-                                </th>
+                                <th colspan="2"
+                                    class="px-6 py-3 border border-gray-200 bg-gray-50 text-center text-xl font-extrabold text-gray-500 tracking-wider uppercase">
+                                    Aksi</th>
                             </tr>
                         @endif
                     </thead>
@@ -154,33 +148,48 @@
                                     {{-- @php
                                     dd(compact('data'));
                                 @endphp --}}
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
+                                    <td class="px-6 py-4 border font-medium border-gray-200 text-xl text-gray-900">
                                         {{ $a = $a + 1 }}
                                     </td>
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
-                                        {{ $item['fish_id'] }}</td>
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
+                                    <td
+                                        class="px-6 py-4 max-w-min border font-medium border-gray-200 text-xl text-gray-900">
+                                        <img src="{{ asset('images/' . $item['img']) }}" alt="">
+                                    </td>
+                                    <td class="px-6 py-4 border font-medium border-gray-200 text-xl text-gray-900">
                                         {{ $item['fishname'] }}</td>
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
+                                    <td class="px-6 py-4 border font-medium border-gray-200 text-xl text-gray-900">
                                         {{ $item['harga'] }}</td>
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
+                                    <td class="px-6 py-4 border-b max-w-96 border-gray-200 text-xl text-gray-900">
                                         {{ $item['keterangan'] }}</td>
-                                    <td class="py-4 border-b border-gray-200 text-base text-indigo-700">
-                                        <button
-                                            class="w-full bg-transparent  text-indigo-700 py-2 px-4 rounded hover:text-indigo-400">
+                                    {{-- <td class="py-4 border-b border-gray-200 text-xl text-indigo-700">
+                                        <button class="w-full font-bold bg-transparent py-3 px-5 rounded hover:bg-gray-50">
                                             Edit
                                         </button>
+                                    </td> --}}
+                                    <td class="border-b font-bold border-gray-200 text-xl text-indigo-700">
+                                        <form action="{{ route('editfish', $item['fish_id']) }}" method="GET">
+                                            @csrf
+                                            <button type="submit"
+                                                class="w-full font-bold bg-transparent py-3 px-5 rounded hover:bg-gray-50">
+                                                Edit
+                                            </button>
+                                        </form>
                                     </td>
-                                    <td class="py-4 border-b border-gray-200 text-base text-indigo-700">
-                                        <button
-                                            class="w-full bg-transparent  text-red-600 py-2 px-4 rounded hover:text-red-400">
-                                            Delete
-                                        </button>
+                                    <td class="border-b font-bold border-gray-200 text-xl text-indigo-700">
+                                        <form action="{{ route('deletefish', $item['fish_id']) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ikan ini?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="w-full bg-transparent text-center text-red-600 py-2 px-4 rounded hover:text-orange-600 hover:bg-gray-50">
+                                                Remove
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4"
+                                    <td colspan="7"
                                         class="px-6 py-4 border-b border-gray-200 text-center text-sm text-gray-500">No data
                                         available</td>
                                 </tr>
@@ -191,26 +200,23 @@
                                     {{-- @php
                                     dd(compact('data'));
                                 @endphp --}}
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
+                                    <td class="px-6 py-4 border font-medium border-gray-200 text-xl text-gray-900">
                                         {{ $a = $a + 1 }}
                                     </td>
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
+                                    <td class="px-6 py-4 border font-medium border-gray-200 text-xl text-gray-900">
                                         {{ $item['type_id'] }}</td>
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
+                                    <td class="px-6 py-4 border font-medium border-gray-200 text-xl text-gray-900">
                                         {{ $item['typename'] }}</td>
-                                    <td class="px-6 py-4 border-b border-gray-200 text-base text-gray-900">
+                                    <td class="px-6 py-4 border font-medium border-gray-200 text-xl text-gray-900">
                                         {{ $item['category'] }}</td>
-                                    <td class="py-4 border-b border-gray-200 text-base text-indigo-700">
-                                        <button
-                                            class="w-full bg-transparent  text-indigo-700 py-2 px-4 rounded hover:text-indigo-400">
-                                            Edit
-                                        </button>
-                                    </td>
-                                    <td class="py-4 border-b border-gray-200 text-base text-indigo-700">
-                                        <button
-                                            class="w-full bg-transparent  text-red-600 py-2 px-4 rounded hover:text-red-400">
-                                            Delete
-                                        </button>
+                                    <td class="py-4 border-b border-gray-200 text-xl text-indigo-600 hover:text-indigo-900">
+                                        <form action="{{ route('edittype', $item['type_id']) }}" method="GET">
+                                            @csrf
+                                            <button type="submit"
+                                                class="w-full font-bold bg-transparent py-3 px-5 rounded hover:bg-gray-50">
+                                                Edit
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty
@@ -222,6 +228,29 @@
                             @endforelse
                         @endif
                     </tbody>
+                    <tfoot>
+                        @if ($data === 'fish')
+                            <tr>
+                                <td colspan="7"
+                                    class="px-6 py-2 border font-medium border-gray-200 bg-gray-50 text-gray-500 tracking-wider">
+                                    <a href="{{ route('addfish') }}"
+                                        class="w-full font-bold py-3 text-xl inline-block text-center hover:bg-gray-200 hover:text-blue-900">
+                                        Tambah Data
+                                    </a>
+                                </td>
+                            </tr>
+                        @elseif ($data === 'fishType')
+                            <tr>
+                                <td colspan="7"
+                                    class="px-6 py-2 border font-medium border-gray-200 bg-gray-50 text-gray-500 tracking-wider">
+                                    <a href="{{ route('addtype') }}"
+                                        class="w-full font-bold py-3 text-xl inline-block text-center hover:bg-gray-200 hover:text-blue-900">
+                                        Tambah Data
+                                    </a>
+                                </td>
+                            </tr>
+                        @endif
+                    </tfoot>
                 </table>
             </div>
         </div>

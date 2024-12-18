@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between">
                 <div class="hidden w-full text-gray-600 md:flex md:items-center">
                     <div class="w-full text-gray-700 md:text-center text-2xl font-semibold">
-                        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Cahya Aquatic</h1>
+                        <h1 class="text-4xl font-extrabold italic tracking-tight text-gray-1200">Cahya Aquatic</h1>
                     </div>
                 </div>
             </div>

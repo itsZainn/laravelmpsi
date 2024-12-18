@@ -22,24 +22,35 @@ class LoginController extends Controller
 
     public function actionlogin(Request $request)
     {
-        session(['default_data' => 'fish']);
-
-        $data = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
+        $message = [
+            'email.required' => 'Email wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'password.confirmed' => 'Password harus sama dengan konfirmasi password'
         ];
 
-        if (Auth::Attempt($data)) {
-            $fishTypes = FishType::all()->toArray();
-            $fish = Fish::all()->toArray();
-            $records = $fish;
-            $data = 'fish';
-            $title = 'Dashboard';
+        $validate = $request->validate([
+            'email' => 'required',
+            'password' => 'required' // Password harus terdiri dari 8 karakter dan sama dengan konfirmasi password.
+        ], $message);
 
-            return view('dashboard', compact('records', 'data', 'title'));
+        session(['default_data' => 'fish']);
+
+        // $data = [
+        //     'email' => $request->input('email'),
+        //     'password' => $request->input('password'),
+        // ];
+
+        if (Auth::Attempt($validate)) {
+            // $fishTypes = FishType::all()->toArray();
+            // $fish = Fish::all()->toArray();
+            // $records = $fish;
+            // $data = 'fish';
+            // $title = 'Dashboard';
+
+            return redirect()->route('dashboard');
         } else {
             Session::flash('error', 'Email atau Password Salah');
-            return redirect('/login');
+            return redirect()->route('login');
         }
     }
 

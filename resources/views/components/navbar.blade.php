@@ -9,9 +9,9 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="/"
+                        <a href="{{ route('catalogue') }}"
                             class="{{ request()->is('/') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Catalogue</a>
-                        <a href="/about"
+                        <a href="{{ route('about') }}"
                             class="{{ request()->is('about') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">About</a>
                         <a href="#"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact
@@ -28,17 +28,19 @@
                             <button type="button" @click="isOpen = !isOpen"
                                 class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                <a href="actionlogout"
-                                    class="{{ request()->is('about') ?: 'text-gray-300  hover:text-white' }} block px-4 py-2 text-sm"
-                                    role="menuitem" tabindex="-1" id="user-menu-item-2">Sign In</a>
-                                {{-- <span class="absolute -inset-1.5"></span>
-                                <span class="sr-only">Login</span>
-                                <img class="size-8 rounded-full"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt=""> --}}
+                                @if (Auth::check())
+                                    {{-- <span class="absolute -inset-1.5"></span> --}}
+                                    <span class="sr-only">Login</span>
+                                    <img class="size-8 rounded-full"
+                                        src="https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=296&q=80"
+                                        alt="">
+                                @else
+                                    <a href="login" class="text-gray-300  hover:text-white block px-4 py-2 text-sm"
+                                        role="menuitem" tabindex="-1" id="user-menu-item-2">Sign In</a>
+                                @endif
                             </button>
                         </div>
-                        {{-- <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
+                        <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
                             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-75 transform"
                             x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
@@ -46,11 +48,15 @@
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                             tabindex="-1">
                             <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-1">Settings</a>
-                        </div> --}}
+                            <a href="{{ route('dashboard') }}"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your
+                                Profile</a>
+                            {{-- <a href="#"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a> --}}
+                            <a href="{{ route('logout') }}"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign
+                                out</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,9 +89,9 @@
     <div x-show="isOpen" class="md:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/"
+            <a href="{{ route('catalogue') }}"
                 class="{{ request()->is('catalogue') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} block rounded-md px-3 py-2 text-base font-medium">Catalogue</a>
-            <a href="/about"
+            <a href="{{ route('about') }}"
                 class="{{ request()->is('about') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} block rounded-md px-3 py-2 text-base font-medium">About</a>
             <a href="#"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact
@@ -104,12 +110,12 @@
                 </div>
             </div>
             <div class="mt-3 space-y-1 px-2">
-                <a href="#"
+                <a href="{{ route('dashboard') }}"
                     class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your
                     Profile</a>
                 <a href="#"
                     class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
-                <a href="#"
+                <a href="{{ route('logout') }}"
                     class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign
                     out</a>
             </div>

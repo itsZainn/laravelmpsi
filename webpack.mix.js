@@ -14,5 +14,11 @@ mix.jigsaw()
 
 mix
     .js('resources/js/app.js', 'public/js')   // Mengkompilasi JavaScript
-    .sass('resources/sass/app.scss', 'public/css')  // Mengkompilasi SASS ke CSS
+    .sass('resources/sass/app.scss', 'public/css', {
+        // Pastikan postcss juga diaktifkan untuk mengkompilasi Tailwind CSS
+        postCss: [
+            require('postcss-import'),
+            require('tailwindcss'),
+        ],
+    })
     .sourceMaps(); // Mengaktifkan source maps (opsional)

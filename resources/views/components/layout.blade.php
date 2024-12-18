@@ -12,18 +12,20 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     @vite(['resources/css/main.css', 'resources/js/main.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>AHAHAHAH</title>
-
+    <title>Cahya Aquatic</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap');
+    </style>
 </head>
 
-<body class="min-h-full">
+<body>
 
     <div class="min-h-full">
         <x-navbar></x-navbar>
 
         <x-header>{{ $title }}</x-header>
 
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-max px-4 py-6 sm:px-6 lg:px-8">
             {{ $slot }}
         </div>
     </div>

@@ -12,7 +12,7 @@
 <body>
     <div class="container"><br>
         <div class="col-md-4 col-md-offset-4">
-            <h2 class="text-center"><b>{{ strtoupper($title) }}</b><br>Content Management System</h2>
+            <h2 class="text-center"><b>{{ strtoupper($title) }}</b><br>CahyaAquatic <br> HEAVEN OF FISH</h2>
             <hr>
             @if (session('error'))
                 <div class="alert alert-danger">
@@ -23,11 +23,17 @@
                 @csrf
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                    <input type="email" name="email" class="form-control" placeholder="Email"
+                        value="{{ old('email') }}">
+                    @if ($errors->has('email'))
+                        <span class="error text-red-500 mb-2">
+                            {{ $errors->first('email') }}
+                        </span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Log In</button>
                 <hr>
